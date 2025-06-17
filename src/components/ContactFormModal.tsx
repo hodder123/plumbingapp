@@ -1,25 +1,54 @@
+import ReCAPTCHA from 'react-google-recaptcha';
+import { useState } from 'react';
+
 interface ContactFormModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-import ReCAPTCHA from 'react-google-recaptcha';
-import { useState } from 'react';
-
 export default function ContactFormModal({ isOpen, onClose }: ContactFormModalProps) {
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const [formValues, setFormValues] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    postalCode: '',
+    message: ''
+  });
 
   const handleCaptchaChange = (token: string | null) => {
     setCaptchaToken(token);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormValues({
+      ...formValues,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!captchaToken) {
       alert("Please complete the captcha!");
       return;
     }
-    // Proceed with your form submission + API call
+
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        ...formValues,
+        captchaToken
+      })
+    });
+
+    if (res.ok) {
+      alert("Your request was sent!");
+      onClose();
+    } else {
+      alert("Something went wrong. Please try again.");
+    }
   };
 
   if (!isOpen) return null;
@@ -44,22 +73,61 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
         </div>
 
         <form className="space-y-4" onSubmit={handleSubmit}>
-          {/* your inputs */}
-          <input type="text" placeholder="Name*" required className="w-full p-3 border border-gray-300 text-sm" />
-          <input type="email" placeholder="Email Address*" required className="w-full p-3 border border-gray-300 text-sm" />
-          <input type="tel" placeholder="Phone Number*" required className="w-full p-3 border border-gray-300 text-sm" />
-          <input type="text" placeholder="Postal Code*" required className="w-full p-3 border border-gray-300 text-sm" />
-          <textarea rows={4} placeholder="How Can We Help You?" required className="w-full p-3 border border-gray-300 text-sm resize-none" />
+          <input
+            name="name"
+            type="text"
+            placeholder="Name*"
+            required
+            value={formValues.name}
+            onChange={handleChange}
+            className="w-full p-3 border border-gray-300 text-sm"
+          />
+          <input
+            name="email"
+            type="email"
+            placeholder="Email Address*"
+            required
+            value={formValues.email}
+            onChange={handleChange}
+            className="w-full p-3 border border-gray-300 text-sm"
+          />
+          <input
+            name="phone"
+            type="tel"
+            placeholder="Phone Number*"
+            required
+            value={formValues.phone}
+            onChange={handleChange}
+            className="w-full p-3 border border-gray-300 text-sm"
+          />
+          <input
+            name="postalCode"
+            type="text"
+            placeholder="Postal Code*"
+            required
+            value={formValues.postalCode}
+            onChange={handleChange}
+            className="w-full p-3 border border-gray-300 text-sm"
+          />
+          <textarea
+            name="message"
+            rows={4}
+            placeholder="How Can We Help You?"
+            required
+            value={formValues.message}
+            onChange={handleChange}
+            className="w-full p-3 border border-gray-300 text-sm resize-none"
+          />
           <input type="file" accept="image/*" multiple className="w-full p-3 border border-gray-300 text-sm" />
           <p className="text-gray-500 text-sm text-center">You can upload up to 4 images (PNG, JPG, GIF, HEIC).</p>
 
           <ReCAPTCHA
-              sitekey="6LfIPnUqAAAAAKVivLW_FvgJXoJH8-RsfALVrFu8"
+            sitekey="6LfIPnUqAAAAAKVivLW_FvgJXoJH8-RsfALVrFu8"
             onChange={handleCaptchaChange}
           />
 
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             disabled={!captchaToken}
             className="w-full p-3 bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-colors duration-300"
           >
