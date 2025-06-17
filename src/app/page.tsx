@@ -60,129 +60,259 @@ export default function Home() {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/images/background2.jpg')" }}
         >
-          <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+<div className="absolute inset-0 bg-black/40"></div>
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">Our Professional Services</h2>
-            <p className="text-lg sm:text-xl text-gray-200 max-w-3xl mx-auto">
-              Comprehensive solutions for all your plumbing, heating, cooling, and gas fitting needs.
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
+              Our Professional Services
+            </h2>
+            <p className="text-lg sm:text-xl text-blue-100 max-w-3xl mx-auto">
+              Comprehensive solutions for all your plumbing, heating, cooling, and gas fitting needs in Kamloops.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             {/* Plumbing Service */}
             <div 
-              className="bg-white bg-opacity-95 backdrop-blur-sm p-6 sm:p-8 text-center cursor-pointer transition-all duration-300 hover:bg-opacity-100 hover:shadow-2xl hover:-translate-y-3 group"
+              className="group bg-white/20 backdrop-blur-sm p-8 cursor-pointer transition-all duration-500 hover:bg-white/30 hover:-translate-y-2 border border-white/20"
               onClick={() => window.location.href = '/plumbing'}
             >
-              <div className="bg-gradient-to-br from-blue-600 to-blue-700 w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6 flex items-center justify-center group-hover:from-orange-500 group-hover:to-orange-600 transition-all duration-300 transform group-hover:scale-110">
-                <Image 
-                  src="/images/no1.png" 
-                  alt="Plumbing Services" 
-                  width={32} 
-                  height={32}
-                  className="sm:w-10 sm:h-10 brightness-0 invert"
-                />
+              <div className="flex items-start space-x-6">
+                <div className="bg-white/20 w-16 h-16 flex items-center justify-center group-hover:bg-orange-500 transition-all duration-300 transform group-hover:scale-110 flex-shrink-0">
+                  <Image 
+                    src="/images/no1.png" 
+                    alt="Plumbing Services" 
+                    width={32} 
+                    height={32}
+                    className="brightness-0 invert"
+                  />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-orange-300 transition-colors duration-300">
+                    Plumbing Services
+                  </h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-200">
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-white/60"></div>
+                      <span className="text-sm">Hot Water Heater Replacements</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-white/60"></div>
+                      <span className="text-sm">Drain & Sewer Inspections</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-white/60"></div>
+                      <span className="text-sm">New Construction Services</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-white/60"></div>
+                      <span className="text-sm">Bathroom Installations</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-white/60"></div>
+                      <span className="text-sm">Pipe & Waterline Repairs</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-white/60"></div>
+                      <span className="text-sm">Emergency Services</span>
+                    </div>
+                  </div>
+                  <div className="mt-4 text-white font-semibold group-hover:text-orange-300 transition-colors duration-300 flex items-center">
+                    Learn More 
+                    <svg className="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </div>
               </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4 group-hover:text-blue-700 transition-colors duration-300">Plumbing</h3>
-              <ul className="text-gray-600 space-y-1 sm:space-y-2 text-left text-sm sm:text-base">
-                <li>• Hot Water Heater Replacements</li>
-                <li>• Drain & Sewer Inspections</li>
-                <li>• New Construction Services</li>
-                <li>• Bathroom Installations</li>
-                <li>• Pipe & Waterline Repairs</li>
-                <li>• Irrigation Systems</li>
-                <li>• Sump Pump Services</li>
-              </ul>
-            </div>
-
-            {/* Cooling Service */}
-            <div 
-              className="bg-white bg-opacity-95 backdrop-blur-sm p-6 sm:p-8 text-center cursor-pointer transition-all duration-300 hover:bg-opacity-100 hover:shadow-2xl hover:-translate-y-3 group"
-              onClick={() => window.location.href = '/cooling'}
-            >
-              <div className="bg-gradient-to-br from-blue-600 to-blue-700 w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6 flex items-center justify-center group-hover:from-orange-500 group-hover:to-orange-600 transition-all duration-300 transform group-hover:scale-110">
-                <Image 
-                  src="/images/no2.png" 
-                  alt="Cooling Services" 
-                  width={32} 
-                  height={32}
-                  className="sm:w-10 sm:h-10 brightness-0 invert"
-                />
-              </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4 group-hover:text-blue-700 transition-colors duration-300">Cooling</h3>
-              <ul className="text-gray-600 space-y-1 sm:space-y-2 text-left text-sm sm:text-base">
-                <li>• Air Conditioner Installation</li>
-                <li>• System Maintenance</li>
-                <li>• HVAC Upgrades</li>
-                <li>• Smart Thermostats</li>
-                <li>• Ductwork Services</li>
-              </ul>
             </div>
 
             {/* Heating Service */}
             <div 
-              className="bg-white bg-opacity-95 backdrop-blur-sm p-6 sm:p-8 text-center cursor-pointer transition-all duration-300 hover:bg-opacity-100 hover:shadow-2xl hover:-translate-y-3 group"
+              className="group bg-white/20 backdrop-blur-sm p-8 cursor-pointer transition-all duration-500 hover:bg-white/30 hover:-translate-y-2 border border-white/20"
               onClick={() => window.location.href = '/heating'}
             >
-              <div className="bg-gradient-to-br from-blue-600 to-blue-700 w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6 flex items-center justify-center group-hover:from-orange-500 group-hover:to-orange-600 transition-all duration-300 transform group-hover:scale-110">
-                <Image 
-                  src="/images/no3.png" 
-                  alt="Heating Services" 
-                  width={32} 
-                  height={32}
-                  className="sm:w-10 sm:h-10 brightness-0 invert"
-                />
+              <div className="flex items-start space-x-6">
+                <div className="bg-white/20 w-16 h-16 flex items-center justify-center group-hover:bg-orange-500 transition-all duration-300 transform group-hover:scale-110 flex-shrink-0">
+                  <Image 
+                    src="/images/no3.png" 
+                    alt="Heating Services" 
+                    width={32} 
+                    height={32}
+                    className="brightness-0 invert"
+                  />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-orange-300 transition-colors duration-300">
+                    Heating Services
+                  </h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-200">
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-white/60"></div>
+                      <span className="text-sm">Furnace Installation & Repair</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-white/60"></div>
+                      <span className="text-sm">Heat Pump Systems</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-white/60"></div>
+                      <span className="text-sm">Boiler Maintenance</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-white/60"></div>
+                      <span className="text-sm">Ductwork Services</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-white/60"></div>
+                      <span className="text-sm">Preventive Maintenance</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-white/60"></div>
+                      <span className="text-sm">Energy Efficiency Upgrades</span>
+                    </div>
+                  </div>
+                  <div className="mt-4 text-white font-semibold group-hover:text-orange-300 transition-colors duration-300 flex items-center">
+                    Learn More 
+                    <svg className="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </div>
               </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4 group-hover:text-blue-700 transition-colors duration-300">Heating</h3>
-              <ul className="text-gray-600 space-y-1 sm:space-y-2 text-left text-sm sm:text-base">
-                <li>• Heating System Installation</li>
-                <li>• Furnace Services</li>
-                <li>• Boiler Maintenance</li>
-                <li>• System Repairs</li>
-                <li>• Preventive Maintenance</li>
-              </ul>
+            </div>
+
+            {/* Cooling Service */}
+            <div 
+              className="group bg-white/20 backdrop-blur-sm p-8 cursor-pointer transition-all duration-500 hover:bg-white/30 hover:-translate-y-2 border border-white/20"
+              onClick={() => window.location.href = '/cooling'}
+            >
+              <div className="flex items-start space-x-6">
+                <div className="bg-white/20 w-16 h-16 flex items-center justify-center group-hover:bg-orange-500 transition-all duration-300 transform group-hover:scale-110 flex-shrink-0">
+                  <Image 
+                    src="/images/no2.png" 
+                    alt="Cooling Services" 
+                    width={32} 
+                    height={32}
+                    className="brightness-0 invert"
+                  />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-orange-300 transition-colors duration-300">
+                    Cooling Services
+                  </h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-200">
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-white/60"></div>
+                      <span className="text-sm">Air Conditioner Installation</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-white/60"></div>
+                      <span className="text-sm">System Maintenance</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-white/60"></div>
+                      <span className="text-sm">HVAC Upgrades</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-white/60"></div>
+                      <span className="text-sm">Smart Thermostats</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-white/60"></div>
+                      <span className="text-sm">Ductwork Cleaning</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-white/60"></div>
+                      <span className="text-sm">Energy Efficiency</span>
+                    </div>
+                  </div>
+                  <div className="mt-4 text-white font-semibold group-hover:text-orange-300 transition-colors duration-300 flex items-center">
+                    Learn More 
+                    <svg className="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* Gas Fitting Service */}
             <div 
-              className="bg-white bg-opacity-95 backdrop-blur-sm p-6 sm:p-8 text-center cursor-pointer transition-all duration-300 hover:bg-opacity-100 hover:shadow-2xl hover:-translate-y-3 group"
+              className="group bg-white/20 backdrop-blur-sm p-8 cursor-pointer transition-all duration-500 hover:bg-white/30 hover:-translate-y-2 border border-white/20"
               onClick={() => window.location.href = '/gas-fitting'}
             >
-              <div className="bg-gradient-to-br from-blue-600 to-blue-700 w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6 flex items-center justify-center group-hover:from-orange-500 group-hover:to-orange-600 transition-all duration-300 transform group-hover:scale-110">
-                <Image 
-                  src="/images/no4.png" 
-                  alt="Gas Fitting Services" 
-                  width={32} 
-                  height={32}
-                  className="sm:w-10 sm:h-10 brightness-0 invert"
-                />
+              <div className="flex items-start space-x-6">
+                <div className="bg-white/20 w-16 h-16 flex items-center justify-center group-hover:bg-orange-500 transition-all duration-300 transform group-hover:scale-110 flex-shrink-0">
+                  <Image 
+                    src="/images/no4.png" 
+                    alt="Gas Fitting Services" 
+                    width={32} 
+                    height={32}
+                    className="brightness-0 invert"
+                  />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-orange-300 transition-colors duration-300">
+                    Gas Fitting Services
+                  </h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-200">
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-white/60"></div>
+                      <span className="text-sm">Gas Line Installation</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-white/60"></div>
+                      <span className="text-sm">Gas Water Heaters</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-white/60"></div>
+                      <span className="text-sm">Gas Fireplaces</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-white/60"></div>
+                      <span className="text-sm">BBQ & Stove Connections</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-white/60"></div>
+                      <span className="text-sm">Outdoor Fire Features</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-white/60"></div>
+                      <span className="text-sm">Safety Inspections</span>
+                    </div>
+                  </div>
+                  <div className="mt-4 text-white font-semibold group-hover:text-orange-300 transition-colors duration-300 flex items-center">
+                    Learn More 
+                    <svg className="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </div>
               </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4 group-hover:text-blue-700 transition-colors duration-300">Gas Fitting</h3>
-              <ul className="text-gray-600 space-y-1 sm:space-y-2 text-left text-sm sm:text-base">
-                <li>• Gas Line Installation</li>
-                <li>• Gas Water Heaters</li>
-                <li>• Gas Fireplaces</li>
-                <li>• BBQ & Stove Connections</li>
-                <li>• Outdoor Fire Features</li>
-              </ul>
             </div>
           </div>
 
-          <div className="text-center mt-12 sm:mt-16">
-            <div className="bg-white bg-opacity-10 backdrop-blur-sm p-6 sm:p-8 max-w-4xl mx-auto border border-white border-opacity-20">
-              <p className="text-lg sm:text-xl text-white mb-6 sm:mb-8">
-                Got a drip? Feeling the heat? Or simply looking for reliable professionals?<br />
-                <span className="text-orange-300 font-semibold">Don&apos;t wait for a flood or a freeze—reach out now and let&apos;s fix it before it gets out of control!</span>
+          {/* Call to Action */}
+          <div className="text-center">
+            <div className="bg-white/10 backdrop-blur-lg p-8 max-w-4xl mx-auto border border-white/20">
+              <h3 className="text-2xl font-bold text-white mb-4">
+                Need Professional Service in Kamloops?
+              </h3>
+              <p className="text-lg text-blue-100 mb-8">
+                Don&apos;t wait for a small problem to become a big one. Our certified technicians are ready to help.
               </p>
               
               <a 
                 href="tel:2508288761" 
-                className="bg-orange-500 hover:bg-orange-600 text-white px-6 sm:px-8 py-3 sm:py-4 text-lg sm:text-xl font-bold transition-all duration-300 inline-block shadow-lg transform hover:scale-105"
+                className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-xl font-bold transition-all duration-300 inline-flex items-center transform hover:scale-105"
               >
-                Call Us Now!
+                <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                Call (250) 828-8761
               </a>
             </div>
           </div>

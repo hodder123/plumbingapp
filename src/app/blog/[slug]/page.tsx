@@ -1,4 +1,4 @@
-// 2. Complete [slug]/page.tsx with all 10 posts - FULLY STYLED
+// 2. Complete [slug]/page.tsx with all 10 posts - FULLY STYLED - FIXED FOR NEXT.JS 15
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import type { Metadata } from 'next';
@@ -527,8 +527,14 @@ const getBlogPost = (slug: string): BlogPost | null => {
   return posts[slug] || null;
 };
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const post = getBlogPost(params.slug);
+// Fix for Next.js 15: Make params and searchParams async
+export async function generateMetadata({ 
+  params 
+}: { 
+  params: Promise<{ slug: string }> 
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const post = getBlogPost(slug);
   
   if (!post) {
     return {
@@ -547,8 +553,13 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default function BlogPost({ params }: { params: { slug: string } }) {
-  const post = getBlogPost(params.slug);
+export default async function BlogPost({ 
+  params 
+}: { 
+  params: Promise<{ slug: string }> 
+}) {
+  const { slug } = await params;
+  const post = getBlogPost(slug);
 
   if (!post) {
     notFound();

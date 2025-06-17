@@ -24,10 +24,33 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  // Fixed and improved icons section
+  icons: {
+    icon: [
+      {
+        url: '/logo.png',
+        sizes: '16x16',
+        type: 'image/png',
+      },
+      {
+        url: '/logo.png',
+        sizes: '32x32',
+        type: 'image/png',
+      },
+      {
+        url: '/logo.png',
+        sizes: '192x192',
+        type: 'image/png',
+      }
+    ],
+    apple: '/logo.png', // For iOS Safari
+    shortcut: '/logo.png', // Fallback
+  },
+  // Fixed OpenGraph with correct domain
   openGraph: {
     type: 'website',
     locale: 'en_CA',
-    url: 'https://kamloops.plumbing',
+    url: 'https://advancedplumbingkamloops.ca',
     siteName: 'Advanced Plumbing Kamloops',
     title: 'Advanced Plumbing Kamloops | Professional Plumbing, HVAC & Gas Services',
     description: 'Professional plumbing, HVAC, cooling, and gas fitting services in Kamloops, BC. Reliable solutions for residential and commercial clients.',
@@ -64,8 +87,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="canonical" href="https://kamloops.plumbing" />
-        <link rel="icon" href="/favicon.ico" />
+        {/* Fixed canonical URL to your main domain */}
+        <link rel="canonical" href="https://advancedplumbingkamloops.ca" />
+        {/* Removed redundant favicon link since icons metadata handles it */}
         <meta name="geo.region" content="CA-BC" />
         <meta name="geo.placename" content="Kamloops" />
         <meta name="geo.position" content="50.6745;-120.3273" />

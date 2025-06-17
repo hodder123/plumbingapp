@@ -9,42 +9,61 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ success: false, message: 'No captcha token' }, { status: 400 });
   }
 
-  // Verify captcha
+  // Verify captcha using environment variable
   const captchaVerifyRes = await fetch(`https://www.google.com/recaptcha/api/siteverify`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: `secret=YOUR_SECRET_KEY&response=${captchaToken}`
+    body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${captchaToken}`
   });
 
   const captchaData = await captchaVerifyRes.json();
-
   if (!captchaData.success) {
     return NextResponse.json({ success: false, message: 'Captcha verification failed' }, { status: 400 });
   }
 
-  // Send email
+  // Send email using Gmail SMTP
   const transporter = nodemailer.createTransport({
-    host: 'smtp.yourprovider.com', // e.g. smtp.gmail.com (if you use Gmail, you'd need OAuth2)
+    host: 'smtp.gmail.com',
     port: 587,
     secure: false,
     auth: {
-      user: '',
-      pass: 'yourpassword'
+      user: process.env.GMAIL_USER,
+      pass: process.env.GMAIL_APP_PASSWORD
     }
   });
 
-  await transporter.sendMail({
-    from: '"Website Contact" <your@email.com>',
-    to: 'destination@email.com',
-    subject: 'New Contact Request',
-    text: `
-      Name: ${name}
-      Email: ${email}
-      Phone: ${phone}
-      Postal Code: ${postalCode}
-      Message: ${message}
-    `
-  });
+  try {
+    await transporter.sendMail({
+      from: '"Advanced Plumbing Kamloops Website" <hodder.ca@gmail.com>',
+      to: 'info@advancedplumbingkamloops.ca',
+      subject: 'New Contact Form Submission - Advanced Plumbing Kamloops',
+      html: `
+        <h2>New Contact Form Submission</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Postal Code:</strong> ${postalCode}</p>
+        <p><strong>Message:</strong></p>
+        <p>${message.replace(/\n/g, '<br>')}</p>
+        <hr>
+        <p><small>Submitted from advancedplumbingkamloops.ca</small></p>
+      `,
+      text: `
+        New Contact Form Submission
+        
+        Name: ${name}
+        Email: ${email}
+        Phone: ${phone}
+        Postal Code: ${postalCode}
+        Message: ${message}
+        
+        Submitted from advancedplumbingkamloops.ca
+      `
+    });
 
-  return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true, message: 'Email sent successfully' });
+  } catch (error) {
+    console.error('Email sending failed:', error);
+    return NextResponse.json({ success: false, message: 'Failed to send email' }, { status: 500 });
+  }
 }
